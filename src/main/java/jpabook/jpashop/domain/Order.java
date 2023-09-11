@@ -48,4 +48,21 @@ private OrderStatus status; //주문 상태(order, cancel)
   this.delivery = delivery;
   delivery.setOrder(this);
  }
+
+ //==생성메서드==// 생성하는 지점 되면 이것만 바꾸면 ㄷ됌...//주문 생성
+ public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
+   Order order = new Order();
+   order.setMember(member);
+   order.setDelivery(delivery);
+   for(OrderItem orderItem:orderItems ) {
+    order.addOrderItem(orderItem);
+   }
+   order.setStatus(OrderStatus.ORDER);//오더스테이터스를 오더상태로 처음 강제해놓음
+   order.setOrderDate(LocalDateTime.now());
+   return order;
+ }
+
+ //--비즈니스 로직--/
+//주문취소
+ public void cancel
 }
